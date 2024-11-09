@@ -4,7 +4,7 @@ public class Main {
         FreightWagon freightWagon = new FreightWagon("FW123", 20.5, true, true);
         freightWagon.setDestination("Москва");
         freightWagon.setOwner("Транспортная компания");
-
+        System.out.println("Задание выполнил: Муминов Рустам Б762-2");
         System.out.println("Грузовой вагон:");
         System.out.println("Регистрационный номер: " + freightWagon.getRegistrationNumber());
         System.out.println("Пункт назначения: " + freightWagon.getDestination());

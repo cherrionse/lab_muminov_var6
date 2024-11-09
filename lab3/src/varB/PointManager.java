@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class PointManager {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println("Задание выполнил: Муминов Рустам Б762-2");
         System.out.println("Введите координаты и время для точки 1:");
         Point p1 = createPoint(scanner);
 

@@ -130,6 +130,7 @@ class StarSystem {
     }
 
     public void displaySystemInfo() {
+        System.out.println("Задание выполнил: Муминов Рустам Б762-2");
         System.out.println("Звездная система:");
         System.out.println("Название звезды: " + getStarName());
         System.out.println("Количество планет: " + getPlanetCount());

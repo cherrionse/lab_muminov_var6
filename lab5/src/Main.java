@@ -19,6 +19,7 @@ public class Main {
         catalog.addLoanHistory("Anna Karenina", "Jack Adams", LocalDate.of(2024, 12, 5), LocalDate.of(2025, 1, 5));
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Задание выполнил: Муминов Рустам Б762-2");
         System.out.print("Введите номер месяца (1-12), чтобы найти книги, взятые в этом месяце: ");
         int month = scanner.nextInt();
 

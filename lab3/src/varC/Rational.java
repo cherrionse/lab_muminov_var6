@@ -11,6 +11,7 @@ public class Rational {
         this.numerator = numerator;
         this.denominator = denominator;
         simplify();
+        System.out.println("Задание выполнил: Муминов Рустам Б762-2");
     }
 
     // Метод для сокращения дроби

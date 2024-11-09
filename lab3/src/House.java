@@ -23,6 +23,7 @@ public class House {
         this.street = street;
         this.buildingType = buildingType;
         this.serviceLife = serviceLife;
+        System.out.println("Задание выполнил: Муминов Рустам Б762-2");
     }
 
     // Дополнительные конструкторы (пример)

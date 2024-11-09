@@ -10,6 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            System.out.println("Задание выполнил: Муминов Рустам Б762-2");
             System.out.println("Меню:");
             System.out.println("1. Добавить драгоценный камень");
             System.out.println("2. Добавить полудрагоценный камень");
