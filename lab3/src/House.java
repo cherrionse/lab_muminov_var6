@@ -5,16 +5,23 @@ public class House {
     private int floor; // Этаж
     private int numberOfRooms; // Количество комнат
     private String street; // Улица
-    private String buildingType; // Тип здания
+    private BuildingType buildingType;  // Тип здания
     private int serviceLife; // Срок эксплуатации
 
-    // Конструктор по умолчанию
-    public House() {
+    // Перечисление типов здания
+    public enum BuildingType {
+        PANEL,     // Панельное
+        BRICK,     // Кирпичное
+        MONOLITH,  // Монолитное
+        WOOD       // Деревянное
     }
+
+    // Конструктор по умолчанию
+    public House() {}
 
     // Конструктор с параметрами
     public House(int id, String apartmentNumber, double area, int floor, int numberOfRooms,
-                 String street, String buildingType, int serviceLife) {
+                 String street, BuildingType buildingType, int serviceLife) {
         this.id = id;
         this.apartmentNumber = apartmentNumber;
         this.area = area;
@@ -26,9 +33,9 @@ public class House {
         System.out.println("Задание выполнил: Муминов Рустам Б762-2");
     }
 
-    // Дополнительные конструкторы (пример)
+    // Дополнительный конструктор
     public House(int id, String apartmentNumber, double area, int floor, int numberOfRooms) {
-        this(id, apartmentNumber, area, floor, numberOfRooms, "Unknown", "Unknown", 0);
+        this(id, apartmentNumber, area, floor, numberOfRooms, "Unknown", BuildingType.PANEL, 0);
     }
 
     // Методы доступа (Setters и Getters)
@@ -39,7 +46,6 @@ public class House {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getApartmentNumber() {
         return apartmentNumber;
@@ -81,11 +87,11 @@ public class House {
         this.street = street;
     }
 
-    public String getBuildingType() {
+    public BuildingType getBuildingType() {
         return buildingType;
     }
 
-    public void setBuildingType(String buildingType) {
+    public void setBuildingType(BuildingType buildingType) {
         this.buildingType = buildingType;
     }
 
@@ -107,7 +113,7 @@ public class House {
                 ", floor=" + floor +
                 ", numberOfRooms=" + numberOfRooms +
                 ", street='" + street + '\'' +
-                ", buildingType='" + buildingType + '\'' +
+                ", buildingType=" + buildingType +
                 ", serviceLife=" + serviceLife +
                 '}';
     }

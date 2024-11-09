@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+//ДОБАВЛЯТЬ ЕЩЕ СВОЙ ВАРИНАТ НАДО БУДЕТ ВАРИАНТ 6!!!
 public class HouseManager {
     private List<House> houses;
 
@@ -9,12 +9,13 @@ public class HouseManager {
     public HouseManager() {
         houses = new ArrayList<>();
         // Инициализация массива объектов (пример)
-        houses.add(new House(1, "A101", 55.5, 3, 2, "Ленина", "Кирпичный", 50));
-        houses.add(new House(2, "B202", 75.0, 5, 3, "Советская", "Монолитный", 40));
-        houses.add(new House(3, "C303", 45.0, 2, 1, "Мира", "Панельный", 30));
-        houses.add(new House(4, "D404", 85.0, 7, 3, "Ленина", "Кирпичный", 60));
-        houses.add(new House(5, "E505", 65.5, 4, 2, "Советская", "Монолитный", 45));
-    }
+            houses.add(new House(1, "A101", 55.5, 3, 2, "Ленина", House.BuildingType.BRICK, 50));
+            houses.add(new House(2, "B202", 75.0, 5, 3, "Советская", House.BuildingType.MONOLITH, 40));
+            houses.add(new House(3, "C303", 45.0, 2, 1, "Мира", House.BuildingType.PANEL, 30));
+            houses.add(new House(4, "D404", 85.0, 7, 3, "Ленина", House.BuildingType.BRICK, 60));
+            houses.add(new House(5, "E505", 65.5, 4, 2, "Советская", House.BuildingType.MONOLITH, 45));
+        }
+
 
     // a) Список квартир, имеющих заданное число комнат
     public List<House> filterByNumberOfRooms(int numberOfRooms) {
