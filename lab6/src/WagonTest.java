@@ -1,34 +1,38 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+// Интерфейс для общих операций с вагоном
+public interface Wagon {
+    // Получить и установить регистрационный номер вагона
+    String getRegistrationNumber();
+    void setRegistrationNumber(String registrationNumber);
 
-import static org.junit.jupiter.api.Assertions.*;
+    // Получить и установить пункт назначения
+    String getDestination();
+    void setDestination(String destination);
 
-public class WagonTest {
+    // Получить и установить владельца вагона
+    String getOwner();
+    void setOwner(String owner);
 
-    private Wagon freightWagon;
-    private Wagon passengerWagon;
+    // Получить и установить статус вагона
+    Status getStatus();
+    void setStatus(Status status);
 
-    @BeforeEach
-    public void setup() {
-        freightWagon = new FreightWagon("FW123", 1000.0, true, true);
-        passengerWagon = new PassengerWagon("PW456", 500.0, 100);
-    }
-    
-    @Test
-    public void testPassengerWagonLoad() {
-        passengerWagon.load(); // Должна выводиться информация о невозможности загрузки
-        assertEquals("Операция загрузки не применима к пассажирскому вагону.", "Операция загрузки не применима к пассажирскому вагону.");
-    }
+    // Узнать снаряженную массу вагона
+    double getTareWeight();
 
-    @Test
-    public void testPassengerWagonUnload() {
-        passengerWagon.unload(); // Должна выводиться информация о невозможности выгрузки
-        assertEquals("Операция выгрузки не применима к пассажирскому вагону.", "Операция выгрузки не применима к пассажирскому вагону.");
-    }
+    // Операции с вагоном
+    void sendToDestination();
+    void service();
+    void repair();
+    void load();
+    void unload();
 
- 
-    @Test
-    public void testPassengerWagonCapacity() {
-        assertEquals(100, ((PassengerWagon) passengerWagon).getPassengerCapacity(), "Passenger wagon should have a capacity of 100.");
-    }
+    // Узнать хрупкость или ценность груза
+    boolean isFragile();
+    boolean isValuable();
 }
+
+// Перечисление возможных статусов вагона
+enum Status {
+    LOADING, UNLOADING, EN_ROUTE, IN_REPAIR, READY_TO_DEPART, NEEDS_REPAIR
+}
+
