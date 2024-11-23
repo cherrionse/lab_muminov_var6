@@ -45,4 +45,14 @@ public class Necklace {
         sb.append("Общая стоимость: ").append(getTotalValue()).append(" у.е.\n");
         return sb.toString();
     }
+
+    public void printGems() {
+        if (VarB.isEmpty()) {
+            System.out.println("Ожерелье пусто.");
+        } else {
+            for (Gem gem : VarB) {
+                System.out.println(gem);
+            }
+        }
+    }
 }
