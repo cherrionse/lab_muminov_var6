@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lab7" />
+        <module name="lab8" />
+        <module name="lab8_1" />
+        <module name="lab10" />
+        <module name="lab9" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="discriminant-calculator" target="1.8" />
+      <module name="lab8_1" target="17" />
+      <module name="wagon-test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,3 +1,5 @@
+
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,14 +43,18 @@ public class WagonTest {
 
     @Test
     public void testPassengerWagonLoad() {
-        passengerWagon.load(); // Должна выводиться информация о невозможности загрузки
-        assertEquals("Операция загрузки не применима к пассажирскому вагону.", "Операция загрузки не применима к пассажирскому вагону.");
+        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class, () -> {
+            passengerWagon.load();
+        });
+        assertEquals("Операция загрузки не применима к пассажирскому вагону.", exception.getMessage());
     }
 
     @Test
     public void testPassengerWagonUnload() {
-        passengerWagon.unload(); // Должна выводиться информация о невозможности выгрузки
-        assertEquals("Операция выгрузки не применима к пассажирскому вагону.", "Операция выгрузки не применима к пассажирскому вагону.");
+        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class, () -> {
+            passengerWagon.unload();
+        });
+        assertEquals("Операция выгрузки не применима к пассажирскому вагону.", exception.getMessage());
     }
 
     @Test
