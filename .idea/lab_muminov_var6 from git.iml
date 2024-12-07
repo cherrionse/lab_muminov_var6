@@ -10,6 +10,8 @@
       <sourceFolder url="file://$MODULE_DIR$/lab11/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/lab12/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lab12/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/lab6/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lab6/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/lab8a/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lab8a/test" isTestSource="true" />
     </content>

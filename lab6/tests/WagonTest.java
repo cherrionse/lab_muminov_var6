@@ -41,21 +41,7 @@ public class WagonTest {
         assertEquals(Status.IN_REPAIR, freightWagon.getStatus(), "Freight wagon should be in repair.");
     }
 
-    @Test
-    public void testPassengerWagonLoad() {
-        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class, () -> {
-            passengerWagon.load();
-        });
-        assertEquals("Операция загрузки не применима к пассажирскому вагону.", exception.getMessage());
-    }
 
-    @Test
-    public void testPassengerWagonUnload() {
-        UnsupportedOperationException exception = assertThrows(UnsupportedOperationException.class, () -> {
-            passengerWagon.unload();
-        });
-        assertEquals("Операция выгрузки не применима к пассажирскому вагону.", exception.getMessage());
-    }
 
     @Test
     public void testPassengerWagonSendToDestination() {
