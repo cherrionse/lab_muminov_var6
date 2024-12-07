@@ -1,4 +1,5 @@
-import varA.DiscriminantCalculator;
+import org.junit.Test;
+import src.varA.DiscriminantCalculator;
 
 import org.junit.jupiter.api.*;
 
