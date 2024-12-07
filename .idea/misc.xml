@@ -10,11 +10,16 @@
         <option value="$PROJECT_DIR$/lab8/pom.xml" />
         <option value="$PROJECT_DIR$/lab9/pom.xml" />
         <option value="$PROJECT_DIR$/lab10/pom.xml" />
+        <option value="$PROJECT_DIR$/lab12/pom.xml" />
+        <option value="$PROJECT_DIR$/untitled/pom.xml" />
+        <option value="$PROJECT_DIR$/laba12/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/lab12/pom.xml" />
         <option value="$PROJECT_DIR$/lab6/pom.xml" />
+        <option value="$PROJECT_DIR$/untitled/pom.xml" />
       </set>
     </option>
   </component>
