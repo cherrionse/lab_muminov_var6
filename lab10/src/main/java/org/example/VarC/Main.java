@@ -118,12 +118,12 @@ public class Main {
                     }
                 }
                 case "Double" -> {
-                    if (isDouble(line)) {
+                    if (isDouble(line) && !isInteger(line)) {
                         result.add(line);
                     }
                 }
                 case "String" -> {
-                    if (!isInteger(line) && !isDouble(line) && line.length() > 1) {
+                    if (!isInteger(line) && !isDouble(line) && line.length() > 1 && line.matches("[a-zA-Z]+")) { // Добавлена проверка на буквы
                         result.add(line);
                     }
                 }

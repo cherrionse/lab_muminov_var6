@@ -7,8 +7,8 @@ import java.util.*;
 public class Main{
     public static void main(String[] args) {
         // Пути к файлам
-        String inputFilePath = "C:\\Users\\mumin\\IdeaProjects\\lab10\\src\\input.txt";
-        String wordListFilePath = "C:\\Users\\mumin\\IdeaProjects\\lab10\\src\\wordlist.txt";
+        String inputFilePath = "lab10\\src\\input.txt";
+        String wordListFilePath = "lab10\\src\\wordlist.txt";
 
 
         try {
@@ -64,10 +64,10 @@ public class Main{
                 .map(String::trim)       // Убираем пробелы
                 .toList());
 
-        // Подсчёт частоты слов
+
         for (String line : lines) {
-            // Приводим строку к нижнему регистру и разбиваем на слова
-            String[] words = line.toLowerCase().split("[^а-яёa-z]+"); // Учитываем русские и английские буквы
+
+            String[] words = line.toLowerCase().split("[^а-яёa-z]+");
             for (String word : words) {
                 if (wordSet.contains(word)) {
                     wordFrequencies.put(word, wordFrequencies.getOrDefault(word, 0) + 1);
@@ -75,7 +75,6 @@ public class Main{
             }
         }
 
-        // Убедимся, что все слова из списка присутствуют в карте (даже с частотой 0)
         for (String word : wordsToCount) {
             wordFrequencies.putIfAbsent(word.toLowerCase().trim(), 0);
         }

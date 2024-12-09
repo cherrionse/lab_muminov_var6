@@ -1,6 +1,10 @@
 package org.example.varB;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.*;
-//Муминов Рустам Б762-2 ВАРРИАНТ 6
+
+// Муминов Рустам Б762-2 ВАРРИАНТ 6
 public class VarB {
     public static void main(String[] args) {
         // Пример текста
@@ -27,43 +31,70 @@ public class VarB {
 
     // Удаление лишних пробелов и табуляций
     public static String cleanText(String text) {
-        return text.replaceAll("\\s+", " ").trim();
+        return text.replaceAll("\\s+", " ").trim(); // Очистка лишних пробелов и табуляций
     }
 
     // Разбор текста на слова
     public static List<Word> parseWords(String text) {
-        String[] wordArray = text.split("[\\s,.;!?]+");
-        List<Word> words = new ArrayList<>();
-        for (String w : wordArray) {
-            if (!w.isEmpty()) {
-                words.add(new Word(w));
-            }
-        }
-        return words;
+        // Убираем все лишние символы, оставляя только буквы, цифры и пробелы
+        String cleanedText = text.replaceAll("[^\\p{L}\\p{N}\\s]+", ""); // Удаляет символы, кроме букв, цифр и пробелов
+
+        // Разбиваем текст на слова по пробелам
+        String[] wordsArray = cleanedText.split("\\s+");
+
+        // Преобразуем массив слов в список объектов Word
+        return Arrays.stream(wordsArray)
+                .filter(word -> !word.isEmpty()) // Убираем пустые строки
+                .map(Word::new) // Создаем объект Word
+                .toList();
     }
 
-    // Сортировка слов в алфавитном порядке по первой букве
     public static Map<Character, List<String>> sortWordsByAlphabet(List<Word> words) {
         Map<Character, List<String>> sortedWords = new TreeMap<>();
+
         for (Word word : words) {
             char firstChar = Character.toLowerCase(word.getWord().charAt(0));
-            sortedWords.putIfAbsent(firstChar, new ArrayList<>());
-            sortedWords.get(firstChar).add(word.getWord());
+            sortedWords.computeIfAbsent(firstChar, k -> new ArrayList<>())
+                    .add(word.getWord());
         }
-        for (List<String> list : sortedWords.values()) {
-            Collections.sort(list);
-        }
+
+        // Сортируем списки слов внутри каждой группы в алфавитном порядке
+        sortedWords.values().forEach(list -> list.sort(String::compareTo));
         return sortedWords;
     }
 
+
     // Печать слов в алфавитном порядке
     public static void printWordsAlphabetically(Map<Character, List<String>> sortedWords) {
-        for (Map.Entry<Character, List<String>> entry : sortedWords.entrySet()) {
-            System.out.println("\n" + Character.toUpperCase(entry.getKey()) + ":");
-            for (String word : entry.getValue()) {
-                System.out.println("  " + word);
-            }
-        }
-    }
-}
+        System.out.println("Before printing words");
+        StringBuilder result = new StringBuilder();
 
+        for (Map.Entry<Character, List<String>> entry : sortedWords.entrySet()) {
+            char key = Character.toUpperCase(entry.getKey());
+            result.append(key).append(":").append("\n");
+
+            for (String word : entry.getValue()) {
+                result.append("  ").append(word).append("\n");
+            }
+
+            result.append("\n");
+        }
+
+        String output = result.toString().trim();
+        System.out.println("Generated output: \n" + output);
+        System.out.println(output);
+    }
+
+    public static String captureOutput(Runnable codeToCapture) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        codeToCapture.run(); // выполнение кода
+
+        System.setOut(originalOut); // восстановление стандартного потока
+        return outputStream.toString(); // возвращение захваченного вывода
+    }
+
+
+}

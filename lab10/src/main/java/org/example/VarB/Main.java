@@ -17,14 +17,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Necklace necklace;
 
-        String filePath = "C:\\Users\\mumin\\IdeaProjects\\lab_muminov_var6 from git\\lab10\\src\\main\\java\\org\\example\\VarB\\necklace.dat"; // Путь к файлу
+        String filePath = "lab10\\src\\necklace.txt";  // Путь к файлу
 
         // Попытка загрузить данные из файла при запуске программы
         try {
             necklace = NecklaceConnector.loadFromFile(filePath);
             System.out.println("Данные из файла загружены успешно:");
             System.out.println(necklace);
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             System.err.println("Не удалось загрузить данные из файла. Используется пустое ожерелье.");
             necklace = new Necklace();
         }
@@ -81,38 +81,6 @@ public class Main {
                     necklace.addGem(new SemiPreciousGem(name, weight, price, transparency));
                 }
 
-
-                case 2 -> {
-                    System.out.print("Название: ");
-                    String name = scanner.next();
-                    System.out.print("Вес (в каратах): ");
-                    double weight = scanner.nextDouble();
-                    System.out.print("Цена за карат: ");
-                    double price = scanner.nextDouble();
-                    System.out.print("Прозрачность (0-100): ");
-                    double transparency = scanner.nextDouble();
-                    necklace.addGem(new SemiPreciousGem(name, weight, price, transparency));
-                }
-                case 3 -> System.out.println(necklace);
-                case 4 -> {
-                    necklace.sortGemsByValue();
-                    System.out.println("Камни отсортированы по стоимости.");
-                }
-                case 5 -> {
-                    System.out.print("Минимальная прозрачность: ");
-                    double minTransparency = scanner.nextDouble();
-                    System.out.print("Максимальная прозрачность: ");
-                    double maxTransparency = scanner.nextDouble();
-
-                    // Ensure the method returns a List<Gem>
-                    var filteredGems = necklace.findGemsByTransparency(minTransparency, maxTransparency);
-
-                    System.out.println("Камни с заданной прозрачностью:");
-
-                    // Print each filtered gem
-                    filteredGems.forEach(gem -> System.out.println());  // Assumes Gem has a proper toString() implementation
-                }
-
                 case 6 -> {
                     try {
                         NecklaceConnector.saveToFile(necklace, filePath);
@@ -126,7 +94,7 @@ public class Main {
                         necklace = NecklaceConnector.loadFromFile(filePath);
                         System.out.println("Данные из файла загружены успешно:");
                         System.out.println(necklace);
-                    } catch (IOException | ClassNotFoundException e) {
+                    } catch (IOException e) {
                         System.err.println("Ошибка загрузки: " + e.getMessage());
                     }
                 }

@@ -15,12 +15,19 @@ public class CashRegister {
     // Попытка стать в очередь, если есть место
     public boolean joinQueue(String customer) {
         synchronized (queue) {
+            System.out.println("Попытка добавить клиента: " + customer + ". Текущий размер очереди: " + queue.size());
             if (queue.size() < maxQueueSize) {
                 queue.offer(customer);
+                System.out.println("Клиент добавлен: " + customer + ". Новый размер очереди: " + queue.size());
                 return true;
             }
+            System.out.println("Очередь полна. Клиент не может быть добавлен.");
             return false;
         }
+    }
+
+    public void clearQueue() {
+        queue.clear();
     }
 
     // Обслуживание клиента (удаление из очереди)

@@ -1,11 +1,13 @@
 package org.example.VarA;
 
 import java.io.*;
+import java.text.NumberFormat;
 import java.util.*;
-//Муминов Рустам Б762-2 ВАРИАНТ 6
+// Муминов Рустам Б762-2 ВАРИАНТ 6
 public class Main {
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\mumin\\IdeaProjects\\lab9\\src\\numbers.txt";
+        String filePath = "lab9/src/numbers.txt";  // Путь к файлу
+
         List<Double> numbers = new ArrayList<>();
 
         try {
@@ -40,8 +42,16 @@ public class Main {
                         throw new CustomFileProcessingException("Ошибка формата: Некорректная строка");
                     }
 
-                    // Парсинг числа
-                    double number = Double.parseDouble(parts[0].replace(",", "."));
+                    // Преобразуем запятую в точку для чисел
+                    String numberStr = parts[0].replace(",", ".");
+
+                    // Используем NumberFormat для корректного преобразования чисел
+                    NumberFormat numberFormat = NumberFormat.getInstance(Locale.US); // Используем стандартную локаль для обработки чисел
+                    numberFormat.setParseIntegerOnly(false);
+                    numberFormat.setGroupingUsed(false);
+
+                    // Парсим число
+                    double number = numberFormat.parse(numberStr).doubleValue();
 
                     // Проверка допустимости значения числа
                     if (Double.isInfinite(number)) {
@@ -49,7 +59,7 @@ public class Main {
                     }
 
                     numbers.add(number);
-                } catch (NumberFormatException e) {
+                } catch (Exception e) {
                     throw new CustomFileProcessingException("Ошибка формата: " + line, e);
                 }
             }
@@ -60,8 +70,9 @@ public class Main {
         return numbers;
     }
 
-
-
+    /**
+     * Вычисление суммы чисел
+     */
     public static double calculateSum(List<Double> numbers) {
         double sum = 0;
         for (double num : numbers) {
@@ -69,5 +80,15 @@ public class Main {
         }
         return sum;
     }
-}
 
+    public static class CustomFileProcessingException extends Exception {
+        public CustomFileProcessingException(String message, Throwable cause) {
+            super(message, cause);
+        }
+
+        public CustomFileProcessingException(String message) {
+            super(message);
+        }
+    }
+
+}

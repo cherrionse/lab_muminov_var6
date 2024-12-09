@@ -12,6 +12,7 @@
         <module name="laba12" />
         <module name="lab7" />
         <module name="lab8" />
+        <module name="Lab6_new" />
         <module name="lab9" />
       </profile>
     </annotationProcessing>

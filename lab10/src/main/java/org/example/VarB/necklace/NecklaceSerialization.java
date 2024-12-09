@@ -17,7 +17,7 @@ public class NecklaceSerialization {
             necklace.addGem(new SemiPreciousGem("Ruby", 1.2, 6000, 90));
 
             // Записываем в файл
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("necklace.dat"))) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("necklace.txt"))) {
                 oos.writeObject(necklace);
                 System.out.println("Ожерелье успешно сохранено в файл.");
             }
