@@ -18,26 +18,23 @@ public class Customer implements Runnable {
         CashRegister selectedRegister = findQueueWithMinimumCustomers();
 
         // Пробуем стать в очередь на выбранной кассе
-        if (selectedRegister.joinQueue(name)) {
-            System.out.println(name + " присоединился к очереди на кассе.");
-            try {
-                // Симуляция обслуживания клиента
-                Thread.sleep(2000);  // Имитируем время обслуживания
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+        selectedRegister.joinQueue(name);
+        System.out.println(name + " присоединился к очереди на кассе.");
 
-            // Обслуживаем клиента
-            selectedRegister.serveCustomer();
-        } else {
-            System.out.println(name + " не смог присоединиться к очереди.");
+        try {
+            // Симуляция обслуживания клиента
+            Thread.sleep(2000); // Имитируем время обслуживания
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
+
+        // Обслуживаем клиента
+        selectedRegister.serveCustomer();
     }
 
     private CashRegister findQueueWithMinimumCustomers() {
         return cashRegisters.stream()
-                .filter(CashRegister::hasSpace)
                 .min(Comparator.comparingInt(CashRegister::queueSize))
-                .orElseThrow(() -> new IllegalStateException("Нет доступных мест в очереди"));
+                .orElseThrow(() -> new IllegalStateException("Нет доступных касс"));
     }
 }
